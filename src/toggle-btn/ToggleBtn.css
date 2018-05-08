@@ -1,0 +1,32 @@
+.toggleBtn{
+    width:60px;
+    height:30px;
+    border:2px solid #999;
+    border-radius: 15px;
+    position: relative;
+}
+
+input[type='checkbox'] {
+        visibility:hidden;
+        position:absolute;
+    }
+
+.greenDotLeft+label{
+    width:30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color:lightgray;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+}
+
+.greenDotRight+label{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: lawngreen;
+    display: inline-block;
+    position: absolute;
+    right:0;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SearchBox from './search-box/SearchBox';
+import ToggleBtn from './toggle-btn/ToggleBtn'
 
 class App extends Component {
   render() {
@@ -14,6 +15,8 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBox options={options}/>
+        <hr/>
+        <ToggleBtn/>
       </div>
     );
   }
