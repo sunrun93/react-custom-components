@@ -1,0 +1,42 @@
+.calendar{
+    width:300px;
+    margin:10px 10px;
+}
+/* header */
+.calendarHeader{
+    height:30px;
+    width:100%;
+    border:1px dotted #333;
+}
+.prevArrow{
+    width:20px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+}
+.dateLabel{
+    width: calc(100% - 40px);
+    height:100%;
+    line-height: 30px;
+    text-align: center;
+
+}
+.nextArrow{
+    width:20px;
+    height: 100%;
+    float: right;
+    cursor: pointer;
+}
+/* main content */
+.calendarMain{
+    width:100%;
+    height:300px;
+    border: 1px dashed #999;
+}
+.weekLabel{
+    display: inline-block;
+    width: 36px;
+    margin: 0px 2px;
+    background: #999;
+    text-align: center;
+}
