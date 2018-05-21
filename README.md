@@ -2,8 +2,21 @@
 
 近期正在逐步摸索学习React的用法，尝试着写几个通用型的组件，整体项目还是根据webpack+react+css-medules构建，
 启动项目：
+
 ```
+git clone git@github.com:sunrun93/react-blog-app.git
+npm i 
 npm start
+```
+启动项目后，如若发现本地css未生效，请在node_modules\react-scripts\config\webpack.config.dev.js和node_modules\react-scripts\config\webpack.config.prod.js找到对应的css-loader, 在其options中添加如下两项(modules,localIdentName):
+```
+ loader: require.resolve('css-loader'),
+ options: {
+        modules: true, 
+        localIdentName: '[name]__[local]__[hash:base64:5]'
+}
+
+
 ```
 主要组件包括：
 1. Search-box:具有输入搜索功能的下拉列表，仅支持单项选中，并可根据用户输入匹配筛选选项，调用方式如下：
