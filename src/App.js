@@ -4,10 +4,14 @@ import './App.css';
 import SearchBox from './search-box/SearchBox';
 import ToggleBtn from './toggle-btn/ToggleBtn';
 import Calendar from './calendar/Calendar';
+import Dialog from './dialog/Dialog';
 
 
 function toggleEvent(checked) {
   alert(checked);
+}
+function showDialog(){
+
 }
 
 class App extends Component {
@@ -19,7 +23,11 @@ class App extends Component {
       { id: '4', label: 'Option-D', value: 'Option-D' }
     ];
     let isChecked = false;
-    
+    let dialogOptions = {
+      width:300,
+      height:300
+    }
+
     return (
       <div className="App">
         <SearchBox options={options}/>
@@ -28,6 +36,9 @@ class App extends Component {
         <br/>
         <hr/>
         <Calendar/>
+        <hr/>
+        <button onclick={showDialog}>Open dialog</button>
+        <Dialog options={dialogOptions}/>
       </div>
     );
   }
