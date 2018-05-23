@@ -16,7 +16,6 @@ npm start
         localIdentName: '[name]__[local]__[hash:base64:5]'
 }
 
-
 ```
 主要组件包括：
 1. Search-box:具有输入搜索功能的下拉列表，仅支持单项选中，并可根据用户输入匹配筛选选项，调用方式如下：
@@ -28,4 +27,39 @@ let options = [
       { id: '4', label: 'Option-D', value: 'Option-D' }
     ];
 <SearchBox options={options}/> //显示label
+```
+2. Toggle-btn:模仿ios系统中的开关按钮，基于checkbox实现一个toggle-btn的小插件。样式上，隐藏checkbox勾选框的样式，将troggle-btn的样式添加到checkbox的label上：
+```
+ <input type="checkbox" checked={this.state.isCheck}
+    className={this.state.isCheck?styles.greenDotRight:styles.greenDotLeft}/>
+ <label></label>
+
+  input[type='checkbox'] {
+          visibility:hidden;
+          position:absolute;
+      }
+
+  .greenDotLeft+label{
+      width:30px;
+      height: 30px;
+      border-radius: 15px;
+      background-color:lightgray;
+      display: inline-block;
+      position: absolute;
+      left: 0;
+  }
+
+  .greenDotRight+label{
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      background-color: lawngreen;
+      display: inline-block;
+      position: absolute;
+      right:0;
+  }
+```
+调用方式如下：
+```
+ <ToggleBtn isChecked={isChecked} onClick={toggleEvent}/> //onClick触发想要调用的方法，接受一个参数拿到当前的状态，isChecked可定义初始化的值
 ```

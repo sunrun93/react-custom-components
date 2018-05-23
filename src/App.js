@@ -5,6 +5,11 @@ import SearchBox from './search-box/SearchBox';
 import ToggleBtn from './toggle-btn/ToggleBtn';
 import Calendar from './calendar/Calendar';
 
+
+function toggleEvent(checked) {
+  alert(checked);
+}
+
 class App extends Component {
   render() {
     let options = [
@@ -13,11 +18,13 @@ class App extends Component {
       { id: '3', label: 'Option-C', value: 'Option-C' },
       { id: '4', label: 'Option-D', value: 'Option-D' }
     ];
+    let isChecked = false;
+    
     return (
       <div className="App">
         <SearchBox options={options}/>
         <hr/>
-        <ToggleBtn/>
+        <ToggleBtn isChecked={isChecked} onClick={toggleEvent}/>{`初始化状态：${isChecked}`}
         <br/>
         <hr/>
         <Calendar/>
@@ -25,5 +32,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

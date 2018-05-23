@@ -136,14 +136,14 @@ class CalendarMain extends React.Component{
             arr.fill('prevMonth', 0, i)
             arr.fill('thisMonth', i, j)
             arr.fill('nextMonth', j)
-            return arr
+            return arr;
         })()
 
         //把每一个月的显示数据以7天为一组等分
-        month.forEach((day, index)=> {
-        if (index % 7 === 0) {
-            rowsInMonth.push(month.slice(index, index + 7))
-        }
+        month.forEach((day, index) => {
+            if (index % 7 === 0) {
+                rowsInMonth.push(month.slice(index, index + 7))
+            }
         })
 
         return(
@@ -168,7 +168,6 @@ class CalendarMain extends React.Component{
                             row.map((day)=> {
                                 return (
                                 <td className={styleOfDays[i]}
-                                    
                                     key={i++}>
                                     {day}
                                 </td>
