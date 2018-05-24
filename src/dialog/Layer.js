@@ -21,7 +21,7 @@ class Layer extends React.Component {
             if (!this.layer) {
                 this.layer = document.createElement("div");
             }
-            ReactDOM.unstable_renderSubtreeIntoContainer(this, this.props.children, this.layer);
+            ReactDOM.unstable_renderSubtreeIntoContainer(document, this.props.children, this.layer);
         }
     }
     removeLayer() {
@@ -36,3 +36,4 @@ class Layer extends React.Component {
         return null
     }
 }
+export default Layer;

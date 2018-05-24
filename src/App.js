@@ -5,16 +5,26 @@ import SearchBox from './search-box/SearchBox';
 import ToggleBtn from './toggle-btn/ToggleBtn';
 import Calendar from './calendar/Calendar';
 import Dialog from './dialog/Dialog';
+import Layer from './dialog/Layer';
 
 
 function toggleEvent(checked) {
   alert(checked);
 }
-function showDialog(){
 
-}
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      showDialog:false
+    }
+  }
+  displaydialg(){
+    this.setState({
+      showDialog:!this.state.showDialog
+    })
+  }
   render() {
     let options = [
       { id: '1', label: 'Option-A', value: 'Option-A' },
@@ -37,8 +47,11 @@ class App extends Component {
         <hr/>
         <Calendar/>
         <hr/>
-        <button onclick={showDialog}>Open dialog</button>
-        <Dialog options={dialogOptions}/>
+        <button onClick={this.displaydialg.bind(this)}>Open dialog</button>
+        <Layer open={this.state.showDialog}>
+          <Dialog options={dialogOptions}/>
+        </Layer>
+       
       </div>
     );
   }
