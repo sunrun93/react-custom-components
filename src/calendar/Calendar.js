@@ -140,7 +140,7 @@ class CalendarMain extends React.Component{
         return(
             <table className={styles.calendarMain}>
                 <thead>
-                    <tr>
+                    <tr>~
                         <th>日</th>
                         <th>一</th>
                         <th>二</th>
