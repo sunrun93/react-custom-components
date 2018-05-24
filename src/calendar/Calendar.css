@@ -10,22 +10,30 @@
 }
 .prevArrow{
     width:20px;
+    display: inline-block;
     height: 100%;
-    float: left;
+    line-height: 30px;
     cursor: pointer;
+}
+.prevArrow:hover{
+    color:blue;
 }
 .dateLabel{
     width: calc(100% - 40px);
+    display: inline-block;
     height:100%;
     line-height: 30px;
     text-align: center;
-
 }
 .nextArrow{
     width:20px;
+    display: inline-block;
     height: 100%;
-    float: right;
+    line-height: 30px;
     cursor: pointer;
+}
+.nextArrow:hover{
+    color:blue;
 }
 /* main content */
 .calendarMain{
