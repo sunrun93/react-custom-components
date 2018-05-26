@@ -24,10 +24,13 @@
 }
 
 .menuList {
-    width: 100%;
+    width: 300px;
     border: 2px solid lightblue;
     margin: 0;
     padding: 0;
+    position: fixed;
+    background: #fff;
+    z-index: 999;
 }
 .hiddenMenuList{
     display: none;

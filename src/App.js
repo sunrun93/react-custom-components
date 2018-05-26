@@ -11,6 +11,12 @@ function toggleEvent(checked) {
   alert(checked);
 }
 
+function RenderDialogContent(){
+  return (
+    <div> User Name:<input/></div>
+  )
+}
+
 
 class App extends Component {
   constructor(){
@@ -30,6 +36,10 @@ class App extends Component {
       showDialog:false
     })
   }
+  okEvent(){
+    alert();
+    this.closeDialog();
+  }
   render() {
     let options = [
       { id: '1', label: 'Option-A', value: 'Option-A' },
@@ -42,7 +52,12 @@ class App extends Component {
       width:300,
       height:300,
       title:'Log in',
-      closeFun:this.closeDialog.bind(this)
+      closeFun:this.closeDialog.bind(this),
+      content:<RenderDialogContent/>,
+      hasOkBtn:true,
+      okEvent:this.okEvent.bind(this),
+      hasCancelBtn:true,
+      cancelEvent:this.closeDialog.bind(this)
     }
 
     return (

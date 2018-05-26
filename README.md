@@ -63,3 +63,4 @@ let options = [
 ```
  <ToggleBtn isChecked={isChecked} onClick={toggleEvent}/> //onClick触发想要调用的方法，接受一个参数拿到当前的状态，isChecked可定义初始化的值
 ```
+3. dialog-component 对话框组件
