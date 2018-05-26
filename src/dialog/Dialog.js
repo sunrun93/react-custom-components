@@ -9,7 +9,12 @@ class Dialog extends React.Component{
     }
     render(){
         return(
-            <div className={styles.dialogDiv} style={{width:this.props.options.width+'px',height:this.props.options.height+'px'}}></div>
+            <div className={styles.dialogDiv} style={{width:this.props.options.width+'px',height:this.props.options.height+'px'}}>
+                <div className={styles.dialogTitle}>  {this.props.options.title}
+                    <span className={styles.closeBtn} onClick={this.props.options.closeFun}>x</span>
+                </div>
+                
+            </div>
         ) 
     }
 }

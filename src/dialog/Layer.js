@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styles from './Layer.css';
 
 class Layer extends React.Component {
     constructor(props) {
@@ -20,8 +21,11 @@ class Layer extends React.Component {
         } else {
             if (!this.layer) {
                 this.layer = document.createElement("div");
+                this.layer.className = styles.layer;
+
+                document.body.appendChild(this.layer);
             }
-            ReactDOM.unstable_renderSubtreeIntoContainer(document, this.props.children, this.layer);
+            ReactDOM.unstable_renderSubtreeIntoContainer(this, this.props.children, this.layer);
         }
     }
     removeLayer() {
@@ -33,7 +37,7 @@ class Layer extends React.Component {
         this.layer = null;
     }
     render() {
-        return null
+        return null;
     }
 }
 export default Layer;

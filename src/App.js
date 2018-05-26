@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.css';
 import SearchBox from './search-box/SearchBox';
 import ToggleBtn from './toggle-btn/ToggleBtn';
 import Calendar from './calendar/Calendar';
@@ -20,9 +19,15 @@ class App extends Component {
       showDialog:false
     }
   }
-  displaydialg(){
+  showDialog(){
     this.setState({
-      showDialog:!this.state.showDialog
+      showDialog:true
+    })
+  }
+  closeDialog(){
+    //close the dialog, add some validations
+    this.setState({
+      showDialog:false
     })
   }
   render() {
@@ -35,11 +40,13 @@ class App extends Component {
     let isChecked = false;
     let dialogOptions = {
       width:300,
-      height:300
+      height:300,
+      title:'Log in',
+      closeFun:this.closeDialog.bind(this)
     }
 
     return (
-      <div className="App">
+      <div>
         <SearchBox options={options}/>
         <hr/>
         <ToggleBtn isChecked={isChecked} onClick={toggleEvent}/>{`初始化状态：${isChecked}`}
@@ -47,8 +54,8 @@ class App extends Component {
         <hr/>
         <Calendar/>
         <hr/>
-        <button onClick={this.displaydialg.bind(this)}>Open dialog</button>
-        <Layer open={this.state.showDialog}>
+        <button onClick={this.showDialog.bind(this)}>Open dialog</button>
+        <Layer className={styles.layer} open={this.state.showDialog}>
           <Dialog options={dialogOptions}/>
         </Layer>
        
