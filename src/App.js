@@ -11,10 +11,28 @@ function toggleEvent(checked) {
   alert(checked);
 }
 
-function RenderDialogContent(){
-  return (
-    <div> User Name:<input/></div>
-  )
+class RenderDialogContent extends Component{
+ 
+  render(){
+    return (
+      <div>
+        <div className={styles.dialogContentLine}> 
+          <span className={styles.label}>User Name</span>
+          <input className={styles.userInput}
+            type='text' 
+            placeholder="Please input user name"
+            ref='userInput'/>
+        </div>
+        <div className={styles.dialogContentLine}>
+          <span className={styles.label}>Password</span>
+          <input className={styles.userInput}
+            type='password' 
+            placeholder="Please input your passwords"
+            ref='userPassword'/>
+        </div>
+      </div>
+    )
+  }
 }
 
 
@@ -22,7 +40,8 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      showDialog:false
+      showDialog:false,
+      userName:''
     }
   }
   showDialog(){
@@ -36,8 +55,10 @@ class App extends Component {
       showDialog:false
     })
   }
+
   okEvent(){
-    alert();
+    let userName=this.refs.customerContent.refs.userInput.value;
+    alert(userName);
     this.closeDialog();
   }
   render() {
@@ -49,11 +70,10 @@ class App extends Component {
     ];
     let isChecked = false;
     let dialogOptions = {
-      width:300,
+      width:400,
       height:300,
       title:'Log in',
       closeFun:this.closeDialog.bind(this),
-      content:<RenderDialogContent/>,
       hasOkBtn:true,
       okEvent:this.okEvent.bind(this),
       hasCancelBtn:true,
@@ -67,11 +87,12 @@ class App extends Component {
         <ToggleBtn isChecked={isChecked} onClick={toggleEvent}/>{`初始化状态：${isChecked}`}
         <br/>
         <hr/>
-        <Calendar/>
-        <hr/>
+
         <button onClick={this.showDialog.bind(this)}>Open dialog</button>
         <Layer className={styles.layer} open={this.state.showDialog}>
-          <Dialog options={dialogOptions}/>
+          <Dialog options={dialogOptions}> 
+            <RenderDialogContent ref='customerContent' userName={this.state.userName}/>
+          </Dialog>
         </Layer>
        
       </div>

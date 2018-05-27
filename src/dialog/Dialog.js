@@ -14,7 +14,8 @@ class Dialog extends React.Component{
                     <span className={styles.closeBtn} onClick={this.props.options.closeFun}>x</span>
                 </div>
                 <div className={styles.dialogContent}>
-                    {this.props.options.content}
+                {/* for customer defined  */}
+                    {this.props.children}
                 </div>
                 <div className={styles.dialogAction}>
                     {this.props.options.hasOkBtn && <button onClick={this.props.options.okEvent}>OK</button>}

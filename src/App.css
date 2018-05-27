@@ -3,3 +3,17 @@
   top:50%;
   left:50%;
 }
+
+.dialogContentLine{
+  width:100%;
+  line-height: 45px;
+  height: 45px;
+}
+.label{
+  width:100px;
+  display:inline-block;
+}
+
+.userInput{
+  width:calc(100% - 120px);
+}

@@ -1,6 +1,7 @@
 # React通用组件
 
 近期正在逐步摸索学习React的用法，尝试着写几个通用型的组件，整体项目还是根据webpack+react+css-medules构建，
+项目代码 https://github.com/sunrun93/react-custom-components
 启动项目：
 
 ```
@@ -63,4 +64,57 @@ let options = [
 ```
  <ToggleBtn isChecked={isChecked} onClick={toggleEvent}/> //onClick触发想要调用的方法，接受一个参数拿到当前的状态，isChecked可定义初始化的值
 ```
-3. dialog-component 对话框组件
+3. dialog-component 弹出框/对话框组件 - 弹出框或者对话框组件在web应用中非常的常见，因此尝试使用react构造一个对话框组件。
+首先我们考虑一下两点：
+    1. 弹出框显示时，通常情况会生成一个遮罩层，使用户无法触发页面上的其他操作。
+    2. 弹出框的DOM节点在根节点生成，显示或关闭不能影响原本的页面结构。
+因此，我们考虑通过两部分来构造这个组件，并通过ReactDOM提供的 ```ReactDOM.unstable_renderSubtreeIntoContainer```方法将其插入到DOM的根节点，结构如下(Layer层为遮罩层，Dialog为我们实际构造的组建):
+```
+    <Layer> 
+        <Dialog> 
+            /* customer defined dialog content */
+        </Dialog>
+    </Layer>
+```
+Layer层的具体实现如下，具体请查看
+```
+class Layer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount() {
+        this.renderLayer();
+    }
+    componentDidUpdate() {
+        this.renderLayer();
+    }
+    componentWillUnmount() {
+        this.removeLayer();
+    }
+    renderLayer() {
+        if (!this.props.open) {
+            this.removeLayer()
+        } else {
+            if (!this.layer) {
+                this.layer = document.createElement("div");
+                this.layer.className = styles.layer;
+                document.body.appendChild(this.layer);//首先将Layer节点添加到DOM中
+            }
+            ReactDOM.unstable_renderSubtreeIntoContainer(this, this.props.children, this.layer);
+            //然后通过unstable_renderSubtreeIntoContainer方法将其放到根结点下
+        }
+    }
+    removeLayer() {
+        if (!this.layer) {
+            return;
+        }
+        ReactDOM.unmountComponentAtNode(this.layer);
+        document.body.removeChild(this.layer);
+        this.layer = null;
+    }
+    render() {
+        return null;
+    }
+}
+```
+具体实现方式：https://github.com/sunrun93/react-custom-components
